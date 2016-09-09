@@ -167,7 +167,7 @@ class product_product(orm.Model):
 
 class product_template(orm.Model):
     _inherit = "product.template"
-
+    
     def _log_all_price_changes(self, cr, uid, product, values, context=None):
         """
         For each field to historize, call the _log_price_change method

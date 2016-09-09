@@ -4,6 +4,7 @@
 #    OpenERP, Open Source Management Solution
 #    Copyright 2013 Camptocamp SA
 #    Author: Joel Grand-Guillaume
+#    Copyright (C) 2004-2016 Simplify Solutions. All Rights Reserved
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -22,7 +23,7 @@
 
 {
     "name" : "Product Price History",
-    "version" : "1.2.2",
+    "version" : "8.0.1.3.3",
     "author" : "Camptocamp,Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "category" : "Generic Modules/Inventory Control",
@@ -69,6 +70,7 @@ Contributors
 
 * Joël Grand-Guillaume <joel.grand-guillaume@camptocamp.com>
 * Yannick Vaucher <yannick.vaucher@camptocamp.com>
+* Bista Solutions
 """,
     'demo': [
         'demo/product_price_history_purchase_demo.yml',
@@ -76,7 +78,6 @@ Contributors
     'data': [
         'wizard/historic_prices_view.xml',
         'product_price_history_view.xml',
-        'report_stock_view.xml',
         'security/ir.model.access.csv',
         'security/product_price_history_security.xml',
     ],
@@ -85,7 +86,7 @@ Contributors
         'test/avg_price_computation_mutlicompanies_multicurrencies.yml',
         'test/price_historization.yml',
     ],
-    'installable': False,
+    'installable': True,
     'active': False,
 }
 
