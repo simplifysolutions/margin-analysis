@@ -3,6 +3,7 @@
 #
 #    Author: Alexandre Fayolle, Joel Grand-Guillaume
 #    Copyright 2012 Camptocamp SA
+#    Copyright (C) 2004-2016 Simplify Solutions. All Rights Reserved
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -25,7 +26,6 @@
  'category': 'Accounting & Finance',
  'complexity': "normal",  # easy, normal, expert
  'depends' : [
-# 'product_get_cost_field',
               'product_replenishment_cost',
               'product_standard_margin',
               'account',
@@ -49,7 +49,10 @@
  rate of the date of the creation/modification of the invoice line (not the invoice date). This choice 
  has been made mainly because the cost price of the product is known at the invoice creation, but we don't 
  have it at the date of the invoice (no historical values in the cost price...) !
- 
+
+ Contributors
+------------
+* Bista Solutions
  
  """,
  'website': 'http://www.camptocamp.com/',
