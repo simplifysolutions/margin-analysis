@@ -20,8 +20,8 @@
 ##############################################################################
 import logging
 from openerp.osv.orm import Model
-from osv import fields
-import decimal_precision as dp
+from openerp.osv import fields
+import openerp.addons.decimal_precision as dp
 _logger = logging.getLogger(__name__)
 
 class account_invoice(Model):
@@ -101,7 +101,7 @@ class account_invoice_line(Model):
             if not obj.product_id:
                 continue
             product = product_obj.read(cr, uid, obj.product_id.id,
-                                       ['id','cost_price'], context=ctx)
+                                       ['id','replenishment_cost'], context=ctx)
             if obj.invoice_id.currency_id is None:
                 currency_id = company_currency_id
             else:
@@ -111,7 +111,7 @@ class account_invoice_line(Model):
             else:
                 factor = 1.
 
-            subtotal_cost_price_company = factor * product['cost_price'] * obj.quantity
+            subtotal_cost_price_company = factor * product['replenishment_cost'] * obj.quantity
             # Convert price_subtotal from invoice currency to company currency
             subtotal_company = factor * currency_obj.compute(cr, uid, currency_id,
                                                                   company_currency_id,
@@ -226,16 +226,16 @@ class account_invoice_line(Model):
         }
 
     def read_group(self, cr, uid, domain, fields, groupby, 
-            offset=0, limit=None, context=None, orderby=False):
-        """The percentage of the relative margin has to be recomputed asit is nor 
-        a sum, nor a avg, but a percentage of 2 valuesof the line computed as:
-        margin_relative = margin_absolute / subtotal_company * 100"""
+            offset=0, limit=None, context=None, orderby=False,lazy=True):
+        """The percentage of the relative margin has to be recomputed as it is 
+        nor a sum, nor a avg, but a percentage of 2 values of the line computed
+        as: margin_relative = margin_absolute / subtotal_company * 100"""
         if not context:
             context = {}
         if groupby:
             res = super(account_invoice_line, self).read_group(cr, uid,
                 domain, fields, groupby,
-                offset=offset, limit=limit, context=context, orderby=orderby)
+                offset=offset, limit=limit, context=context, orderby=orderby,lazy=lazy)
             for re in res:
                 margin_relative = 0.0
                 if re.get('margin_relative', False):

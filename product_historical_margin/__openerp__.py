@@ -24,7 +24,9 @@
  'maintainer': 'Camptocamp',
  'category': 'Accounting & Finance',
  'complexity': "normal",  # easy, normal, expert
- 'depends' : ['product_get_cost_field',
+ 'depends' : [
+# 'product_get_cost_field',
+              'product_replenishment_cost',
               'product_standard_margin',
               'account',
               'sale',
@@ -60,7 +62,7 @@
  'test': [
     'test/basic_historical_margin.yml',
  ],
- 'installable': False,
+ 'installable': True,
  'auto_install': False,
  'license': 'AGPL-3',
  'application': False

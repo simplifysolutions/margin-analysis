@@ -21,9 +21,9 @@
 import logging
 
 from openerp.osv.orm import Model
-from osv import fields
+from openerp.osv import fields
 
-import decimal_precision as dp
+import openerp.addons.decimal_precision as dp
 _logger = logging.getLogger(__name__)
 
 # Don't Forget to remove supplier (in_invoice et in_refund) from the product margin computation
