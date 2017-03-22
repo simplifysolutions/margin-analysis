@@ -35,4 +35,7 @@
         'test/cost_price_update.yml',
     ],
     'license': 'AGPL-3',
+    'installable': True,
+    'auto_install': False,
+    'application': False
 }
